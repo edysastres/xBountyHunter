@@ -15,4 +15,15 @@
   <ItemGroup>
     <Compile Remove="Views\detallePage.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="xBountyApp.xaml.cs">
+      <DependentUpon>xBountyApp.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\detallePage.xaml.cs">
+      <DependentUpon>detallePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

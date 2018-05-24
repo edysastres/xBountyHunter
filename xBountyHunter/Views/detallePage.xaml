@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="xBountyHunter.Views.detallePage">
     
-    <ContentPage.Content>
-    </ContentPage.Content>
+    <StackLayout VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 Orientation="Vertical">
+    <Label FontSize="20" HorizontalOptions="Center">Atrapado!!!</Label>
+    <Button BorderColor="Black" HorizontalOptions="Center" Text="Eliminar"></Button>
+    </StackLayout>
+    
 </ContentPage>

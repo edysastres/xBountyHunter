@@ -7,9 +7,13 @@ namespace xBountyHunter.Views
 {
     public partial class detallePage : ContentPage
     {
-        public detallePage()
+        Models.mFugitivos Fugitivo = new Models.mFugitivos();
+
+        public detallePage(Models.mFugitivos fugitivo)
         {
             InitializeComponent();
+            Fugitivo = fugitivo;
+            Title = Fugitivo.Name;
         }
     }
 }

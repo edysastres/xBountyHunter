@@ -9,9 +9,8 @@ namespace xBountyHunter
     {
         public xBountyApp()
         {
-            //InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Views.MainTabbedPage());
         }
 
         protected override void OnStart()
