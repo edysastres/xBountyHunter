@@ -26,6 +26,8 @@ namespace xBountyHunter.Views
             verticalStackLayout = new StackLayout { Orientation = StackOrientation.Vertical, HorizontalOptions = LayoutOptions.FillAndExpand };
 
             Title = "Acerca de";
+            if (xBountyApp.Current.Properties.ContainsKey("Rating"))
+                srating.Value = (double)xBountyApp.Current.Properties["Rating"];
             lratingvalor.Text = srating.Value.ToString();
             verticalStackLayout.Children.Add(ldevelopedby);
             verticalStackLayout.Children.Add(ldevelopername);
@@ -39,6 +41,7 @@ namespace xBountyHunter.Views
                 double value = srating.Value;
                 value = Math.Round(value * 2) / 2;
                 lratingvalor.Text = value.ToString();
+                xBountyApp.Current.Properties["Rating"] = value;
             };
 
             Content = verticalStackLayout;

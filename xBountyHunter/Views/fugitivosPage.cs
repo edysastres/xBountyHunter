@@ -12,10 +12,17 @@ namespace xBountyHunter.Views
         {
             Title = "Fugitivos";
             Extras.listaFugitivos listaFugitivos = new Extras.listaFugitivos();
-            list.ItemsSource = listaFugitivos.ocFugitivos;
+            MessagingCenter.Subscribe<Page>(this, "Update", messageCallback);
+            list.ItemsSource = listaFugitivos.selectNoCaptured();
             list.ItemTemplate = new DataTemplate(typeof(ListViewCell));
             list.ItemTapped += listItemTapped_Tapped;
             Content = list;
+        }
+
+        private void messageCallback(Page obj)
+        {
+            Extras.listaFugitivos listaFugitivos = new Extras.listaFugitivos();
+            list.ItemsSource = listaFugitivos.selectNoCaptured();
         }
 
         public void listItemTapped_Tapped(object sender, ItemTappedEventArgs args)

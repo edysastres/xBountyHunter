@@ -27,8 +27,28 @@ namespace xBountyHunter.Views
             horizontalStackLayout.Children.Add(bagregar);
             horizontalStackLayout.Children.Add(bcancelar);
 
+            bagregar.Clicked += bagregar_Clicked;
+
             Content = verticalStackLayout;
         }
+
+        public async void bagregar_Clicked(object sender, EventArgs e)
+        {
+            Extras.databaseManager db = new Extras.databaseManager();
+            Models.mFugitivos fugitivos = new Models.mFugitivos();
+            fugitivos.Name = enewname.Text;
+            fugitivos.Capturado = false;
+            int result = db.insertItem(fugitivos);
+            if(result == 1)
+            {
+                await DisplayAlert("Agregado", "Se ha agregado el fugitivo a la base de datos", "Aceptar");
+                MessagingCenter.Send<Page>(this, "Update");
+                await Navigation.PopAsync();
+            }
+            db.closeConnection();
+        }
+
+
     }
 }
 

@@ -7,7 +7,7 @@
                  HorizontalOptions="FillAndExpand"
                  Orientation="Vertical">
     <Label FontSize="20" HorizontalOptions="Center">Atrapado!!!</Label>
-    <Button BorderColor="Black" HorizontalOptions="Center" Text="Eliminar"></Button>
+    <Button Clicked="beliminar_Clicked" BorderColor="Black" HorizontalOptions="Center" Text="Eliminar"></Button>
     </StackLayout>
     
 </ContentPage>

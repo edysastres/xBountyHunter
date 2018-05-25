@@ -12,7 +12,14 @@ namespace xBountyHunter.Views
             InitializeComponent();
             Extras.listaFugitivos listaFugitivos = new Extras.listaFugitivos();
             List<Models.mFugitivos> capturados = listaFugitivos.ocFugitivos;
-            list.ItemsSource = capturados;
+            MessagingCenter.Subscribe<Page>(this, "Update", messageCallback);
+            list.ItemsSource = listaFugitivos.selectCaptured();
+        }
+
+        private void messageCallback(Page obj)
+        {
+            Extras.listaFugitivos listaFugitivos = new Extras.listaFugitivos();
+            list.ItemsSource = listaFugitivos.selectCaptured();
         }
 
         public void listItemTapped_Tapped(object sender, ItemTappedEventArgs args)
