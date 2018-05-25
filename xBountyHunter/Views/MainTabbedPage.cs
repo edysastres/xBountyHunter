@@ -8,6 +8,7 @@ namespace xBountyHunter.Views
     {
         public MainTabbedPage()
         {
+            updateBD();
             ToolbarItem btnAgregar = new ToolbarItem("AGREGAR", "", btnAgregar_onClick);
             ToolbarItems.Add(btnAgregar);
 
@@ -21,9 +22,15 @@ namespace xBountyHunter.Views
             Children.Add(new acercaDePage());
         }
 
-        public void btnAgregar_onClick()
+        public async void btnAgregar_onClick()
         {
-            Navigation.PushAsync(new Views.agregarFugitivo());
+           await Navigation.PushAsync(new agregarFugitivo());
+        }
+
+        private void updateBD()
+        {
+            Extras.webServiceConnection ws = new Extras.webServiceConnection(this);
+            ws.connectGET();
         }
     }
 }

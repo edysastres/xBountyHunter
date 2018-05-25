@@ -66,6 +66,12 @@ namespace xBountyHunter.Extras
             return result;
         }
 
+        public List<Models.mFugitivos> selectAll()
+        {
+            List<Models.mFugitivos> result = db.Query<Models.mFugitivos>("SELECT * FROM [mFugitivos]");
+            return result;
+        }
+
         public void closeConnection()
         {
             db.Close();

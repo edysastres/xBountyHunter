@@ -38,10 +38,13 @@ namespace xBountyHunter.Views
 
         private async void Bcapturar_Clicked(object sender, EventArgs e)
         {
+            Extras.webServiceConnection ws = new Extras.webServiceConnection(this);
             Fugitivo.Capturado = true;
             int result = DB.updateItem(Fugitivo);
+            string udid = DependencyService.Get<DependencyServices.IUDID>().getUIDID();
+            string message = ws.connectPOST(udid);
             if (result == 1)
-                await DisplayAlert("Capturado", "El fugitivo " + Fugitivo.Name + " ha sido capturado", "Aceptar");
+                await DisplayAlert("Capturado", "El fugitivo " + Fugitivo.Name + " ha sido capturado\n"+message, "Aceptar");
             else
                 await DisplayAlert("Error", "Error al capturar fugitivo", "Aceptar");
             DB.closeConnection();
