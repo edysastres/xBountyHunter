@@ -7,6 +7,13 @@
                  HorizontalOptions="FillAndExpand"
                  Orientation="Vertical">
     <Label FontSize="20" HorizontalOptions="Center">Atrapado!!!</Label>
+        <StackLayout Orientation="Vertical" 
+                     HorizontalOptions="Center" 
+                     WidthRequest="100" 
+                     HeightRequest="100"
+                     BackgroundColor="Gray">
+            <Image x:Name="img" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+        </StackLayout>
     <Button Clicked="beliminar_Clicked" BorderColor="Black" HorizontalOptions="Center" Text="Eliminar"></Button>
     </StackLayout>
     

@@ -11,9 +11,10 @@ namespace xBountyHunter.Droid
     {
         public string getUIDID()
         {
-            Context cnt = Android.App.Application.Context;
-            TelephonyManager tm = (TelephonyManager)cnt.GetSystemService(Context.TelephonyService);
-            return tm.Imei;
+            //Context cnt = Android.App.Application.Context;
+            //TelephonyManager tm = (TelephonyManager)cnt.GetSystemService(Context.TelephonyService);
+            //return tm.Imei;
+            return string.Empty;
         }
 
         public AndroidUDID()

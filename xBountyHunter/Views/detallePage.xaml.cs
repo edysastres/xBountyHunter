@@ -15,6 +15,7 @@ namespace xBountyHunter.Views
             InitializeComponent();
             Fugitivo = fugitivo;
             Title = Fugitivo.Name;
+            img.Source = ImageSource.FromFile(Fugitivo.Photo);
         }
 
         public async void beliminar_Clicked(object sender, EventArgs args)
