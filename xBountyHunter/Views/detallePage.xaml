@@ -14,7 +14,8 @@
                      BackgroundColor="Gray">
             <Image x:Name="img" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
         </StackLayout>
-    <Button Clicked="beliminar_Clicked" BorderColor="Black" HorizontalOptions="Center" Text="Eliminar"></Button>
+        <Button Clicked="bmap_Clicked" BorderColor="Black" HorizontalOptions="Center" Text="MAPA"></Button>
+        <Button Clicked="beliminar_Clicked" BorderColor="Black" HorizontalOptions="Center" Text="ELIMINAR"></Button>
     </StackLayout>
     
 </ContentPage>

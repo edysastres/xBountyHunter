@@ -18,6 +18,11 @@ namespace xBountyHunter.Views
             img.Source = ImageSource.FromFile(Fugitivo.Photo);
         }
 
+        public async void bmap_Clicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new mapPage(Fugitivo));
+        }
+
         public async void beliminar_Clicked(object sender, EventArgs args)
         {
             int result = DB.deleteItem(Fugitivo.ID);

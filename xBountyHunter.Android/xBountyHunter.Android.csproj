@@ -59,8 +59,11 @@
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.4.118</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>3.0.0.482510</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
-      <Version>2.3.6</Version>
+      <Version>2.4.1.823</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +73,7 @@
     <Compile Include="SQLiteAndroid.cs" />
     <Compile Include="AndroidUDID.cs" />
     <Compile Include="CameraAndroid.cs" />
+    <Compile Include="GetLocationAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

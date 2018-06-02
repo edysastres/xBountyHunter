@@ -10,5 +10,7 @@ namespace xBountyHunter.Models
         public string Name{ get; set; }
         public bool Capturado { get; set; }
         public string Photo { get; set; }
+        public string Lat { get; set; }
+        public string Lon { get; set; }
     }
 }

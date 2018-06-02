@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using FFImageLoading.Forms;
 using Xamarin.Forms;
+using xBountyHunter.DependencyServices;
 
 namespace xBountyHunter.Views
 {
@@ -36,7 +38,7 @@ namespace xBountyHunter.Views
                 Aspect = Aspect.Fill, 
                 WidthRequest = 100, 
                 HeightRequest = 100,
-                Source = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
+                //Source = "http://loremflickr.com/600/600/nature?filename=simple.jpg"
             };
             cImg = new CachedImage() { 
                 HorizontalOptions = LayoutOptions.Center,
@@ -61,7 +63,7 @@ namespace xBountyHunter.Views
 
             verticalStackLayout.Children.Add(fugitivoSuelto);
             verticalStackLayout.Children.Add(imageContainer1);
-            verticalStackLayout.Children.Add(imageContainer2);
+            //verticalStackLayout.Children.Add(imageContainer2);
             verticalStackLayout.Children.Add(bfoto);
             verticalStackLayout.Children.Add(bcapturar);
             verticalStackLayout.Children.Add(beliminar);
@@ -72,10 +74,14 @@ namespace xBountyHunter.Views
         private async void Bcapturar_Clicked(object sender, EventArgs e)
         {
             Extras.webServiceConnection ws = new Extras.webServiceConnection(this);
+
+            string udid = DependencyService.Get<IUDID>().getUIDID();
+            Dictionary<string, string> location = DependencyService.Get<IGetLocation>().getLocation();
             Fugitivo.Capturado = true;
             Fugitivo.Photo = imagePath;
+            Fugitivo.Lat = location["Lat"];
+            Fugitivo.Lon = location["Lon"];
             int result = DB.updateItem(Fugitivo);
-            string udid = DependencyService.Get<DependencyServices.IUDID>().getUIDID();
             string message = ws.connectPOST(udid);
             if (result == 1)
                 await DisplayAlert("Capturado", "El fugitivo " + Fugitivo.Name + " ha sido capturado\n"+message, "Aceptar");
@@ -84,6 +90,18 @@ namespace xBountyHunter.Views
             DB.closeConnection();
             MessagingCenter.Send<Page>(this, "Update");
             await Navigation.PopAsync();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DependencyService.Get<IGetLocation>().activarGPS();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            DependencyService.Get<IGetLocation>().apagarGPS();
         }
 
         private async void Beliminar_Clicked(object sender, EventArgs e)
