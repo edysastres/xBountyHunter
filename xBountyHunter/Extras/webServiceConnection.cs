@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace xBountyHunter.Extras
 {
@@ -20,17 +21,17 @@ namespace xBountyHunter.Extras
             mainPage = page;
         }
 
-        public void connectGET()
+        public async Task connectGET()
         {
             List<Models.mFugitivos> fugitivos = new List<Models.mFugitivos>();
             client = new HttpClient();
 
             try
             {
-                HttpResponseMessage response = client.GetAsync(URL_WS1).Result;
+                HttpResponseMessage response = await client.GetAsync(URL_WS1).ConfigureAwait(false);
                 if(response.IsSuccessStatusCode)
                 {
-                    string content = response.Content.ReadAsStringAsync().Result;
+                    string content = await response.Content.ReadAsStringAsync();
                     List<Models.mFugitivos> items = JsonConvert.DeserializeObject<List<Models.mFugitivos>> (content);
                     verifyFugitivosOnDB(items);
                     response.Dispose();
@@ -39,13 +40,13 @@ namespace xBountyHunter.Extras
             catch (Exception ex)
             {
                 if (ex.InnerException != null && ex.InnerException.Message == "Error: NameResolutionFailure")
-                    connectGET();
+                    await connectGET();
                 else
-                    mainPage.DisplayAlert("Error", "No se pudo conectar con los servicios web", "Aceptar");
+                    await mainPage.DisplayAlert("Error", "No se pudo conectar con los servicios web", "Aceptar");
             }
         }
 
-        public string connectPOST(string udid)
+        public async Task<string> connectPOST(string udid)
         {
             string result = "";
             string postBody = "{\"UDIDString\":\"" + udid + "\"}";
@@ -54,10 +55,10 @@ namespace xBountyHunter.Extras
             {
                 HttpContent bodyContent = new StringContent(postBody, Encoding.UTF8, "application/json");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PostAsync(URL_WS2, bodyContent).Result;
+                HttpResponseMessage response = await client.PostAsync(URL_WS2, bodyContent).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
-                    string content = response.Content.ReadAsStringAsync().Result;
+                    string content = await response.Content.ReadAsStringAsync();
                     Dictionary<string, string> jsondata = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
                     result = jsondata["mensaje"];
                 }
@@ -65,9 +66,9 @@ namespace xBountyHunter.Extras
             catch(Exception ex)
             {
                 if (ex.InnerException != null && ex.InnerException.Message == "Error: NameResolutionFailure")
-                    connectGET();
+                    await connectGET();
                 else
-                    mainPage.DisplayAlert("Error", "No se pudo conectar con los servicios web", "Aceptar");
+                    await mainPage.DisplayAlert("Error", "No se pudo conectar con los servicios web", "Aceptar");
             }
             return result;
         }

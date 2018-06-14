@@ -82,7 +82,7 @@ namespace xBountyHunter.Views
             Fugitivo.Lat = location["Lat"];
             Fugitivo.Lon = location["Lon"];
             int result = DB.updateItem(Fugitivo);
-            string message = ws.connectPOST(udid);
+            string message = await ws.connectPOST(udid);
             if (result == 1)
                 await DisplayAlert("Capturado", "El fugitivo " + Fugitivo.Name + " ha sido capturado\n"+message, "Aceptar");
             else

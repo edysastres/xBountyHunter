@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace xBountyHunter.Views
@@ -8,10 +8,11 @@ namespace xBountyHunter.Views
     {
         public MainTabbedPage()
         {
-            updateBD();
+            //Avanzado Timers
+            //updateBD();
+
             ToolbarItem btnAgregar = new ToolbarItem("AGREGAR", "", btnAgregar_onClick);
             ToolbarItems.Add(btnAgregar);
-
             Title = "X Bountry Hunter";
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -27,10 +28,10 @@ namespace xBountyHunter.Views
            await Navigation.PushAsync(new agregarFugitivo());
         }
 
-        private void updateBD()
+        private async Task updateBDAsync()
         {
             Extras.webServiceConnection ws = new Extras.webServiceConnection(this);
-            ws.connectGET();
+            await ws.connectGET();
         }
     }
 }
