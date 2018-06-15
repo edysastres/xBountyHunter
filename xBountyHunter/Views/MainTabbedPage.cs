@@ -21,6 +21,7 @@ namespace xBountyHunter.Views
             Children.Add(new fugitivosPage());
             Children.Add(new capturadosPage());
             Children.Add(new acercaDePage());
+            Children.Add(new TestPage());
         }
 
         public async void btnAgregar_onClick()

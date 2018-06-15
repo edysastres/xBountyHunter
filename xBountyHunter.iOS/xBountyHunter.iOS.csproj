@@ -25,7 +25,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -98,6 +98,8 @@
     <Compile Include="iOSUDID.cs" />
     <Compile Include="CameraiOS.cs" />
     <Compile Include="GetLocationiOS.cs" />
+    <Compile Include="CustomRenders\EntryCustomRenderiOS.cs" />
+    <Compile Include="CustomRenders\CustomMapiOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -170,5 +172,8 @@
       <Project>{3CF9D8D3-339F-4001-8D66-EB9D5E4CE641}</Project>
       <Name>xBountyHunter</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomRenders\" />
   </ItemGroup>
 </Project>

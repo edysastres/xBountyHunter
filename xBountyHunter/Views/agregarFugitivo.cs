@@ -1,6 +1,6 @@
 ﻿using System;
-
 using Xamarin.Forms;
+using xBountyHunter.CustomRenders;
 
 namespace xBountyHunter.Views
 {
@@ -10,14 +10,17 @@ namespace xBountyHunter.Views
         StackLayout horizontalStackLayout;
         Button bagregar;
         Button bcancelar;
-        Entry enewname;
+        //Entry enewname;
+
+        //Custom renders, Entry
+        EntryCustomRender enewname;
 
         public agregarFugitivo()
         {
             verticalStackLayout = new StackLayout { Orientation = StackOrientation.Vertical, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.FillAndExpand };
             horizontalStackLayout = new StackLayout { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.Center };
 
-            enewname = new Entry { TextColor = Color.Black, BackgroundColor = Color.FromHex("#D3D3D3"), HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.Center };
+            enewname = new EntryCustomRender { TextColor = Color.Black, BackgroundColor = Color.FromHex("#D3D3D3"), HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.Center };
             bagregar = new Button { Text = "AGREGAR", BorderColor = Color.Black, BorderWidth = 1 };
             bcancelar = new Button { Text = "CANCELAR", BorderColor = Color.Black, BorderWidth = 1 };
 

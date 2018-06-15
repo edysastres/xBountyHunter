@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="xBountyHunter.Views.TestPage"
+             Title="Test">
+    <ContentPage.Content>
+        <StackLayout>
+            <ActivityIndicator 
+                x:Name="Loading"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"/>
+            <Entry 
+                x:Name="txtUser" 
+                Placeholder="Usuario"
+                Text="{Binding UserName, Mode=TwoWay}"
+                TextChanged="Handle_TextChanged"/>
+            <Entry 
+                x:Name="txtPassword" 
+                Placeholder="Password" 
+                IsPassword="true"
+                Text="{Binding Password, Mode=TwoWay}"
+                TextChanged="Handle_TextChanged"/>
+            <Button 
+                x:Name="btnLogin" 
+                Text="Login" 
+                IsEnabled="{Binding LoginButtonIsEnable}"
+                Command="{Binding LoginCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
