@@ -19,9 +19,12 @@
     <Folder Include="DependencyServices\" />
     <Folder Include="ViewModels\" />
     <Folder Include="CustomRenders\" />
+    <Folder Include="NativeViews\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\detallePage.cs" />
+    <Compile Remove="Efectos\EfectoFocusAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="xBountyApp.xaml.cs">
@@ -33,5 +36,13 @@
     <Compile Update="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\xamagon.png" />
+    <None Remove="Images\anonymous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\xamagon.png" />
+    <EmbeddedResource Include="Images\anonymous.png" />
   </ItemGroup>
 </Project>

@@ -25,7 +25,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -100,6 +100,7 @@
     <Compile Include="GetLocationiOS.cs" />
     <Compile Include="CustomRenders\EntryCustomRenderiOS.cs" />
     <Compile Include="CustomRenders\CustomMapiOS.cs" />
+    <Compile Include="Efectos\EfectoFocusiOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -175,5 +176,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenders\" />
+    <Folder Include="Efectos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\anonymous.png" />
+    <BundleResource Include="Resources\xamagon.png" />
   </ItemGroup>
 </Project>

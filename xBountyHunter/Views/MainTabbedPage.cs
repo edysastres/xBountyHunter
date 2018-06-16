@@ -22,6 +22,7 @@ namespace xBountyHunter.Views
             Children.Add(new capturadosPage());
             Children.Add(new acercaDePage());
             Children.Add(new TestPage());
+            Children.Add(new NativeViews.NativeSwitch());
         }
 
         public async void btnAgregar_onClick()

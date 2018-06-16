@@ -21,6 +21,8 @@ namespace xBountyHunter.Views
             horizontalStackLayout = new StackLayout { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.Center };
 
             enewname = new EntryCustomRender { TextColor = Color.Black, BackgroundColor = Color.FromHex("#D3D3D3"), HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.Center };
+
+            enewname.Effects.Add(Effect.Resolve("xBountyHunter.FocusEffect"));
             bagregar = new Button { Text = "AGREGAR", BorderColor = Color.Black, BorderWidth = 1 };
             bcancelar = new Button { Text = "CANCELAR", BorderColor = Color.Black, BorderWidth = 1 };
 

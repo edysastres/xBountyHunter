@@ -13,6 +13,8 @@ namespace xBountyHunter.Views
         private Label lratingvalor;
         private Slider srating;
         private StackLayout verticalStackLayout;
+        private StackLayout imageContainer;
+        private Image img;
 
         //avanzado uso de Device.OpenUri
         private Label lmoreinfo;
@@ -28,6 +30,25 @@ namespace xBountyHunter.Views
             //avanzado uso de Device.OpenUri
             lmoreinfo = new Label { Text = "Mas información", FontSize = 12, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.FromHex("#7A96EA") };
             verticalStackLayout = new StackLayout { Orientation = StackOrientation.Vertical, HorizontalOptions = LayoutOptions.FillAndExpand };
+            //TextColor = Color.FromHex("#7A96EA");
+
+            img = new Image
+            {
+                //Source = "https://sumodh.com/wp-content/uploads/2018/03/xamagon.png",
+                //Source = "xBountyHunter.Views.Images.xamagon.png",
+                Source = "anonymous.png",
+                WidthRequest = 100,
+                HeightRequest = 100,
+                BackgroundColor = Color.Black
+            };
+            imageContainer = new StackLayout
+            {
+                Orientation = StackOrientation.Vertical,
+                HorizontalOptions = LayoutOptions.Center,
+                WidthRequest = 100,
+                HeightRequest = 100,
+                BackgroundColor = Color.Gray
+            };
 
             Title = "Acerca de";
             if (Application.Current.Properties.ContainsKey("Rating"))
@@ -39,6 +60,10 @@ namespace xBountyHunter.Views
             verticalStackLayout.Children.Add(ltrainigsr);
             verticalStackLayout.Children.Add(srating);
             verticalStackLayout.Children.Add(lratingvalor);
+
+            imageContainer.Children.Add(img);
+            verticalStackLayout.Children.Add(imageContainer);
+            //verticalStackLayout.Children.Add(img);
 
             verticalStackLayout.Children.Add(lmoreinfo);
             var tapLbl = new TapGestureRecognizer();

@@ -121,7 +121,7 @@ namespace xBountyHunter.Views
             imagePath = await DependencyService.Get<DependencyServices.ICamera>().takePhoto();
             if (imagePath == "" || imagePath == "Cancel" || imagePath == null)
             {
-                bcapturar.IsEnabled = false;
+                bcapturar.IsEnabled = true;
             }
             else
             {

@@ -57,7 +57,7 @@ namespace xBountyHunter.ViewModels
         public TestPageViewModel(ContentPage pageReference)
         {
             PageReference = pageReference;
-            LoginCommand = new Command(async () => await ExecuteLoginCommand());
+            LoginCommand = new Command(async () => await ExecuteLoginCommand(), () => LoginButtonIsEnable);
             TextchangedCommand = new Command(ExecuteTextchangedCommand);
         }
 
